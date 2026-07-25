@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music API Player - Apple Music Style</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <h1>♫ Music</h1>
+      </div>
+      <nav class="nav-menu">
+        <div class="nav-item active" data-view="now-playing">
+          <span class="icon">🎵</span>
+          <span>Now Playing</span>
+        </div>
+        <div class="nav-item" data-view="library">
+          <span class="icon">📚</span>
+          <span>Library</span>
+        </div>
+        <div class="nav-item" data-view="favorites">
+          <span class="icon">❤️</span>
+          <span>Favorites</span>
+          <span class="badge" id="favoritesBadge">0</span>
+        </div>
+        <div class="nav-item" data-view="search">
+          <span class="icon">🔍</span>
+          <span>Search</span>
+        </div>
+        <div class="nav-item" data-view="settings">
+          <span class="icon">⚙️</span>
+          <span>Settings</span>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-left">
+          <h2 id="headerTitle">Now Playing</h2>
+          <p id="headerSubtitle"></p>
+        </div>
+        <div class="header-actions">
+          <div class="search-wrapper">
+            <input type="text" placeholder="Search songs..." class="search-box" id="globalSearch" autocomplete="off">
+            <div class="search-suggestions hidden" id="searchSuggestions"></div>
+          </div>
+          <button class="btn-settings" id="settingsBtn">⚙️</button>
+        </div>
+      </header>
+
+      <!-- NOW PLAYING VIEW -->
+      <div class="view-container" id="now-playing-view" data-view="now-playing">
+        <!-- Now Playing Card -->
+        <section class="now-playing-section">
+          <div class="now-playing-card">
+            <div class="album-art">
+              <img id="albumCover" class="album-img" src="" alt="Album Cover">
+              <div class="album-placeholder" id="albumPlaceholder">🎵</div>
+              <div class="album-overlay"></div>
+              <button class="btn-favorite-large" id="favoriteBtn">🤍</button>
+            </div>
+
+            <div class="song-info">
+              <h3 class="song-title" id="songTitle">Kaikai Kitan</h3>
+              <p class="song-artist" id="songArtist">Eve</p>
+              <p class="song-album" id="songAlbum">Jujutsu Kaisen Season 1 Opening</p>
+              <p class="song-duration" id="songDuration">3:39</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+              <span class="time" id="currentTime">0:00</span>
+              <input type="range" class="progress-bar" id="progressBar" min="0" max="100" value="0">
+              <span class="time" id="totalTime">3:39</span>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+              <button class="btn-control" id="prevBtn">⏮</button>
+              <button class="btn-play" id="playBtn">▶</button>
+              <button class="btn-control" id="nextBtn">⏭</button>
+              <button class="btn-control" id="repeatBtn">🔄</button>
+              <button class="btn-control" id="shuffleBtn">🔀</button>
+            </div>
+
+            <!-- Volume Control -->
+            <div class="volume-container">
+              <span class="volume-icon">🔊</span>
+              <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+            </div>
+          </div>
+        </section>
+
+        <!-- Playlist Section -->
+        <section class="playlist-section">
+          <div class="section-header">
+            <h3>Playlist</h3>
+            <span class="song-count" id="songCount">100 songs</span>
+          </div>
+          <div class="playlist" id="playlist">
+            <!-- Playlist items will be loaded here -->
+          </div>
+        </section>
+      </div>
+
+      <!-- SEARCH VIEW -->
+      <div class="view-container hidden" id="search-view" data-view="search">
+        <section class="search-section">
+          <div class="search-filters">
+            <div class="filter-group">
+              <label>Filter by:</label>
+              <select id="filterGenre" class="filter-select">
+                <option value="">All Genres</option>
+                <option value="Anime J-Rock">Anime J-Rock</option>
+                <option value="Anime J-Pop">Anime J-Pop</option>
+                <option value="Afrobeats">Afrobeats</option>
+                <option value="Dark Pop">Dark Pop</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Sort by:</label>
+              <select id="sortBy" class="filter-select">
+                <option value="title">Title</option>
+                <option value="artist">Artist</option>
+                <option value="genre">Genre</option>
+                <option value="duration">Duration</option>
+              </select>
+            </div>
+          </div>
+          <div class="search-results" id="searchResults">
+            <!-- Search results will be loaded here -->
+          </div>
+        </section>
+      </div>
+
+      <!-- LIBRARY VIEW -->
+      <div class="view-container hidden" id="library-view" data-view="library">
+        <section class="library-section">
+          <div class="library-filters">
+            <div class="filter-tabs">
+              <button class="filter-tab active" data-filter="all">All Songs</button>
+              <button class="filter-tab" data-filter="genre">By Genre</button>
+              <button class="filter-tab" data-filter="artist">By Artist</button>
+              <button class="filter-tab" data-filter="duration">By Duration</button>
+            </div>
+          </div>
+          <div class="library-content" id="libraryContent">
+            <!-- Library content will be loaded here -->
+          </div>
+        </section>
+      </div>
+
+      <!-- FAVORITES VIEW -->
+      <div class="view-container hidden" id="favorites-view" data-view="favorites">
+        <section class="favorites-section">
+          <div class="favorites-header">
+            <h3>Your Favorite Songs</h3>
+            <button class="btn-clear-favorites" id="clearFavoritesBtn">Clear All</button>
+          </div>
+          <div class="favorites-list" id="favoritesList">
+            <!-- Favorite songs will be loaded here -->
+          </div>
+        </section>
+      </div>
+
+      <!-- SETTINGS VIEW -->
+      <div class="view-container hidden" id="settings-view" data-view="settings">
+        <section class="settings-section">
+          <div class="settings-card">
+            <div class="settings-header">
+              <div class="user-avatar">👤</div>
+              <div class="user-info">
+                <h3 id="userName">Music User</h3>
+                <p id="userEmail">user@musicplayer.com</p>
+              </div>
+            </div>
+
+            <div class="settings-group">
+              <h4>Playback Settings</h4>
+              <div class="setting-item">
+                <label>Autoplay</label>
+                <input type="checkbox" id="autoplayToggle" class="toggle-switch" checked>
+              </div>
+              <div class="setting-item">
+                <label>Show Lyrics</label>
+                <input type="checkbox" id="lyricsToggle" class="toggle-switch">
+              </div>
+              <div class="setting-item">
+                <label>High Quality Audio</label>
+                <input type="checkbox" id="qualityToggle" class="toggle-switch" checked>
+              </div>
+            </div>
+
+            <div class="settings-group">
+              <h4>Display Settings</h4>
+              <div class="setting-item">
+                <label>Theme</label>
+                <select id="themeSelect" class="filter-select">
+                  <option value="dark">Dark</option>
+                  <option value="light">Light</option>
+                  <option value="auto">Auto</option>
+                </select>
+              </div>
+              <div class="setting-item">
+                <label>Font Size</label>
+                <input type="range" id="fontSizeSlider" min="12" max="20" value="14" class="slider-input">
+                <span id="fontSizeValue">14px</span>
+              </div>
+            </div>
+
+            <div class="settings-group">
+              <h4>Data & Privacy</h4>
+              <div class="setting-item">
+                <label>Favorite Songs Saved</label>
+                <span class="info-text" id="favoritesCount">0</span>
+              </div>
+              <div class="setting-item">
+                <label>History Enabled</label>
+                <input type="checkbox" id="historyToggle" class="toggle-switch" checked>
+              </div>
+              <button class="btn-danger" id="clearHistoryBtn">Clear History</button>
+              <button class="btn-danger" id="clearCacheBtn">Clear Cache</button>
+            </div>
+
+            <div class="settings-group">
+              <h4>About</h4>
+              <div class="info-box">
+                <p><strong>App Name:</strong> Music Player Pro</p>
+                <p><strong>Version:</strong> 1.0.0</p>
+                <p><strong>Developer:</strong> Music API Team</p>
+                <p><strong>Total Songs:</strong> <span id="totalSongsInfo">0</span></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="player.js"></script>
+</body>
+</html>
