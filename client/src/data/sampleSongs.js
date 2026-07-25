@@ -1,0 +1,17 @@
+export const SAMPLE_SONGS = [
+  { id: 1, title: "Kaikai Kitan", artist: "Eve", album: "Jujutsu Kaisen Season 1 OP", duration: "3:39", genre: "Anime J-Rock", cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop" },
+  { id: 2, title: "Ao no Sumika (Where Our Blue Is)", artist: "Tatsuya Kitani", album: "Jujutsu Kaisen Season 2 OP", duration: "3:17", genre: "Anime J-Rock", cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=800&auto=format&fit=crop" },
+  { id: 3, title: "LEveL", artist: "SawanoHiroyuki[nZk]:TXT", album: "Solo Leveling OP", duration: "3:11", genre: "Anime J-Pop", cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800&auto=format&fit=crop" },
+  { id: 4, title: "ReawakeR", artist: "LiSA ft. Felix", album: "Solo Leveling Season 2", duration: "3:25", genre: "Anime J-Rock", cover: "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=800&auto=format&fit=crop" },
+  { id: 5, title: "You Can't Run From Your Soul", artist: "AURORA", album: "Wild Rift Soundtracks", duration: "3:10", genre: "Dark Pop", cover: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800&auto=format&fit=crop" },
+  { id: 6, title: "Lonely At The Top", artist: "Asake", album: "Work Of Art", duration: "2:37", genre: "Afrobeats", cover: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800&auto=format&fit=crop" },
+  { id: 7, title: "Amapiano", artist: "Asake ft. Olamide", album: "Work Of Art", duration: "2:45", genre: "Afrobeats", cover: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=800&auto=format&fit=crop" },
+  { id: 8, title: "Active", artist: "Asake ft. Travis Scott", album: "Lungu Boy", duration: "2:51", genre: "Afrobeats", cover: "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?q=80&w=800&auto=format&fit=crop" },
+  { id: 9, title: "Wave", artist: "Asake ft. Central Cee", album: "Lungu Boy", duration: "2:35", genre: "Afrobeats", cover: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=800&auto=format&fit=crop" },
+  { id: 31, title: "Last Last", artist: "Burna Boy", album: "Love, Damini", duration: "2:52", genre: "Afrobeats", cover: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=800&auto=format&fit=crop" },
+  { id: 35, title: "Essence", artist: "Wizkid ft. Tems", album: "Made in Lagos", duration: "4:08", genre: "Afrobeats", cover: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=800&auto=format&fit=crop" },
+  { id: 41, title: "Calm Down", artist: "Rema", album: "Rave & Roses", duration: "3:39", genre: "Afrobeats", cover: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=800&auto=format&fit=crop" },
+  { id: 71, title: "Gurenge", artist: "LiSA", album: "Demon Slayer OP", duration: "3:58", genre: "Anime J-Rock", cover: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=800&auto=format&fit=crop" },
+  { id: 76, title: "KICK BACK", artist: "Kenshi Yonezu", album: "Chainsaw Man OP", duration: "3:13", genre: "Anime Alternative", cover: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800&auto=format&fit=crop" },
+  { id: 87, title: "Idol", artist: "YOASOBI", album: "Oshi no Ko OP", duration: "3:33", genre: "Anime J-Pop", cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop" }
+];

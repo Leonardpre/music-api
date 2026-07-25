@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-charcoal-dark: #121113;
+  --color-olive-vintage: #1E241E;
+  --color-umber-muted: #1C1817;
+  --color-terracotta: #D96B43;
+  --color-terracotta-hover: #c45a33;
+  --color-cream: #F4F1EA;
+  --color-warm-gray: #9E988F;
+  --color-border-subtle: #2A2725;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+}
+
+/* Custom scrollbars for clean editorial look */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #121113;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2725;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D96B43;
+}
+
+/* Flat design discipline: sharp or 4px borders, no heavy shadows */
+.border-editorial {
+  border: 1px solid #2A2725;
+}
+
+.font-editorial-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-editorial-sans {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.font-editorial-mono {
+  font-family: 'Space Grotesk', monospace;
+}
