@@ -1,7 +1,7 @@
 // songs.js
 const songs = [
   // === THE SPECIFIC REQUESTS (5 songs) ===
-  { id: 1, title: "Kaikai Kitan", artist: "Eve", album: "Jujutsu Kaisen Season 1 Opening", duration: "3:39", genre: "Anime J-Rock",  },
+  { id: 1, title: "Kaikai Kitan", artist: "Eve", album: "Jujutsu Kaisen Season 1 Opening", duration: "3:39", genre: "Anime J-Rock", },
   { id: 2, title: "Ao no Sumika (Where Our Blue Is)", artist: "Tatsuya Kitani", album: "Jujutsu Kaisen Season 2 Opening", duration: "3:17", genre: "Anime J-Rock" },
   { id: 3, title: "LEveL", artist: "SawanoHiroyuki[nZk]:TOMORROW X TOGETHER", album: "Solo Leveling Season 1 Opening", duration: "3:11", genre: "Anime J-Pop" },
   { id: 4, title: "ReawakeR", artist: "LiSA ft. Felix of Stray Kids", album: "Solo Leveling Season 2 Opening", duration: "3:25", genre: "Anime J-Rock" },
@@ -109,7 +109,11 @@ const songs = [
   { id: 100, title: "Suzume", artist: "RADWIMPS ft. Toaka", album: "Suzume", duration: "3:58", genre: "Anime Soundtrack" },
   { id: 101, title: "Energy", artist: "Fireboy DML", album: "Single", duration: "3:25", genre: "Afrobeats", audio: "https://res.cloudinary.com/uhsuzy6c/video/upload/v1784979705/Fireboy-DML-Energy-Audio-_JustNaija.com_ug2hge.mp3", cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80" },
   { id: 102, title: "Hallelu", artist: "Masterkraft ft. Bella Shmurda & Zlatan", album: "Hallelu", duration: "3:33", genre: "Afrobeats", audio: "https://res.cloudinary.com/uhsuzy6c/video/upload/v1784984586/Masterkraft_ft_Zlatan_Bella_Shmurda_-_Hallelu_oncmly.mp3", cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop&q=80" },
-  { id: 103, title: "Isaka", artist: "Ciza ft. Tems, Omah Lay & Rema", album: "Isaka", duration: "3:33", genre: "Afrobeats", audio: "https://res.cloudinary.com/uhsuzy6c/video/upload/v1784984875/Ciza-Ft-Tems-Omah-Lay-Thukuthela-Jazzworx-Lekaa-Beats-Isaka-II-6am_zy3dn1.mp3", cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80" }
+  { id: 103, title: "Isaka", artist: "Ciza ft. Tems, Omah Lay & Rema", album: "Isaka", duration: "3:33", genre: "Afrobeats", audio: "https://res.cloudinary.com/uhsuzy6c/video/upload/v1784984875/Ciza-Ft-Tems-Omah-Lay-Thukuthela-Jazzworx-Lekaa-Beats-Isaka-II-6am_zy3dn1.mp3", cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80" },
+  { id: 104, title: "cana", artist: "seyi vibez", album: "", duration: "2:20", genre: "afrobeats", audio: "https://res.cloudinary.com/uhsuzy6c/video/upload/v1784988441/Seyi-Vibez-Cana_m4cpjr.mp3", cover: "https://images.unsplash.com/photo-14932254f7125-ac70b4814696?w=600&auto=format&fit=crop&q=80" },
+  { id: 105, title: "girlfriend", artist: "ruger", album: "", duration: "3:17", genre: "afrobeats", audio: "https://res.cloudinary.com/uhsuzy6c/video/upload/v1784988452/Ruger-Girlfriend_zlpmy4.mp3", cover: "https://images.unsplash.com/photo-1582718094514-299e397b6d4e?w=600&auto=format&fit=crop&q=80" },
+  { id: 106, title: "Alaska", artist: "Seyi vibez", album: "", duration: "2:51", genre: "afrobeats", audio: "https://res.cloudinary.com/uhsuzy6c/video/upload/v1784988425/Seyi-Vibez-Alaska_lbbvhx.mp3", cover: "https://images.unsplash.com/photo-1681374500737-044f9777085d?w=600&auto=format&fit=crop&q=80" },
+  { id: 107, title: "baby", artist: "joeboy", album: "baby", duration: "2:38", genre: "afrobeats", audio: "https://res.cloudinary.com/uhsuzy6c/video/upload/v1784988415/Joeboy-Baby_cshdhq.mp3", cover: "https://images.unsplash.com/photo-1516802271374-f53d88fc686d?w=600&auto=format&fit=crop&q=80" }
 ];
 
 module.exports = songs;
