@@ -465,6 +465,17 @@ navItems.forEach(item => {
 // RENDER PLAYLIST
 // ============================================
 
+function formatPaddedDuration(durationStr) {
+  if (!durationStr) return '00:00';
+  const parts = durationStr.split(':');
+  if (parts.length === 2) {
+    const mins = parts[0].padStart(2, '0');
+    const secs = parts[1].padStart(2, '0');
+    return `${mins}:${secs}`;
+  }
+  return durationStr;
+}
+
 function renderPlaylist() {
   playlist.innerHTML = '';
   
@@ -477,19 +488,80 @@ function renderPlaylist() {
       item.classList.add('active');
     }
     
+    const isFav = isFavorite(song.id);
+    const formattedTime = formatPaddedDuration(song.duration);
+    
     item.innerHTML = `
-      <div class="playlist-item-number">${index + 1}</div>
-      <img src="${getSongCover(song)}" class="item-thumb-img" alt="${song.title}">
+      <button class="playlist-play-btn" title="Play">▶</button>
       <div class="playlist-item-info">
         <div class="playlist-item-title">${song.title}</div>
         <div class="playlist-item-artist">${song.artist}</div>
       </div>
-      <div class="playlist-item-genre">${song.genre}</div>
-      <div class="playlist-item-duration">${song.duration}</div>
+      <div class="playlist-item-album">
+        <a href="#" class="album-link" onclick="event.preventDefault();">${song.album || 'Single'}</a>
+      </div>
+      <div class="playlist-item-actions">
+        <button class="action-btn btn-add ${isFav ? 'active' : ''}" title="Add to Favorites">
+          <svg class="action-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="1.8" fill="none"><rect x="3" y="3" width="18" height="18" rx="4"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </button>
+        <button class="action-btn btn-share" title="Share Song">
+          <svg class="action-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="1.8" fill="none"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </button>
+        <button class="action-btn btn-download" title="Download Audio">
+          <svg class="action-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="1.8" fill="none"><rect x="4" y="3" width="16" height="18" rx="4"/><path d="M12 7v7m0 0l-3-3m3 3l3-3"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+        </button>
+        <button class="action-btn btn-more" title="More Options">
+          <svg class="action-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+        </button>
+      </div>
+      <div class="playlist-item-duration">${formattedTime}</div>
     `;
     
-    item.addEventListener('click', () => {
+    item.addEventListener('click', (e) => {
+      if (e.target.closest('.action-btn') || e.target.closest('.album-link')) return;
       playSong(index);
+    });
+    
+    const addBtn = item.querySelector('.btn-add');
+    addBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (isFavorite(song.id)) {
+        removeFromFavorites(song.id);
+        addBtn.classList.remove('active');
+        showNotification(`Removed "${song.title}" from Favorites`);
+      } else {
+        addToFavorites(song.id);
+        addBtn.classList.add('active');
+        showNotification(`Added "${song.title}" to Favorites`);
+      }
+    });
+
+    const shareBtn = item.querySelector('.btn-share');
+    shareBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const songUrl = window.location.origin + `/songs/${song.id}`;
+      navigator.clipboard.writeText(songUrl).then(() => {
+        showNotification(`🔗 Link for "${song.title}" copied to clipboard!`);
+      }).catch(() => {
+        showNotification(`🔗 "${song.title}" by ${song.artist}`);
+      });
+    });
+
+    const downloadBtn = item.querySelector('.btn-download');
+    downloadBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (song.audio && song.audio.startsWith('http') && !song.audio.includes('spotify.com')) {
+        window.open(song.audio, '_blank');
+        showNotification(`📥 Opening audio link for "${song.title}"...`);
+      } else {
+        showNotification(`📥 Download link for "${song.title}"`);
+      }
+    });
+
+    const moreBtn = item.querySelector('.btn-more');
+    moreBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showNotification(`🎵 Options menu for "${song.title}"`);
     });
     
     playlist.appendChild(item);
